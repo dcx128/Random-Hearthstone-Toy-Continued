@@ -71,11 +71,15 @@ AllHearthToyIndex[54452]  = 75136   --Ethereal
 AllHearthToyIndex[93672]  = 136508  --Dark Portal
 AllHearthToyIndex[168907] = 298068 --Holographic Digitalization
 AllHearthToyIndex[172179] = 308742 --Eternal Traveler
---Necrolords have to be special, can't use it unless you are one.  Also, covenant check can't occur until fully loaded; moving this to check along stone checking.
---AllHearthToyIndex[182773] = 340200 --Necrolord
+AllHearthToyIndex[182773] = 340200 --Necrolord
 AllHearthToyIndex[180290] = 326064 --Night Fae
 AllHearthToyIndex[184353] = 345393 --Kyrian
 AllHearthToyIndex[183716] = 342122 --Venthyr
+AllHearthToyIndex[188952] = 363799 --Dominated Hearthstone
+AllHearthToyIndex[190237] = 363799 --Broker Translocation Matrix
+AllHearthToyIndex[193588] = 375357 --Timewalker's Hearthstone
+
+
 
 -- This is the meat right here.
 function SetRandomHearthToy()
@@ -104,10 +108,6 @@ end
 
 -- Get stones learned and usable by character
 function GetLearnedStones()
-	-- Checking to see if we're a Necrolord. We should be fully loaded by now since we're wating for the ToyBox to load.
-	if C_Covenants.GetActiveCovenantID() == 4 then
-		AllHearthToyIndex[182773] = 340200 --Necrolord
-	end
 	-- Get the current setting for the toybox so we can set it back after we're done.
 	ToyCollSetting = C_ToyBox.GetCollectedShown()
 	ToyUnCollSetting = C_ToyBox.GetUncollectedShown()
@@ -177,28 +177,17 @@ end
 
 -- Did a stone get used?
 function SpellcastUpdate(spellID)
-if not InCombatLockdown() then
-	for k in pairs(AllHearthToyIndex) do
-		if spellID == AllHearthToyIndex[k] then
-			SetRandomHearthToy()
-			break
-		end
-	end
-end
-end
-
--- Old function to delete the base HS from bags.  Leaving in case I can find a workaround from Blizz's change.
-function DeleteHearthstone()
-	for bag = 0,4 do
-		for slot = 1, 32 do
-			local itemID = GetContainerItemID(bag,slot)
-			if itemID == 6948 then
-				PickupContainerItem(bag,slot)
-				DeleteCursorItem()
+	if not InCombatLockdown() then
+		for k in pairs(AllHearthToyIndex) do
+			if spellID == AllHearthToyIndex[k] then
+				SetRandomHearthToy()
+				break
 			end
 		end
 	end
 end
+
+
 
 -- Code to randomly pick a key from a table.
 function RandomKey(t)
