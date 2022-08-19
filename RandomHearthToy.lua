@@ -21,7 +21,7 @@ RHT.to:SetScript("OnUpdate", function (self, elapse)
 			GetLearnedStones()
 			if RHTInitialized then
 				SetRandomHearthToy()
-				print "RHT initialized"
+				-- print "RHT initialized" -- uncomment for debugging future versions
 				RHT.to:SetScript("OnUpdate", nil)
 			else
 				timeOut = 1
@@ -34,9 +34,6 @@ end)
 
 frame:RegisterEvent("PLAYER_ENTERING_WORLD")
 
--- Blizz broke deleting items from bags, leaving code incase I find a fix.  Yeah.  Right.
---frame:RegisterEvent("BAG_UPDATE")
-
 -- Spellcast stopping is the check for if a hearthstone has been used.
 frame:RegisterEvent("UNIT_SPELLCAST_STOP")
 
@@ -48,10 +45,6 @@ local function Event(self, event, arg1, arg2, arg3)
 	-- When a spell cast stops and it's the player's spell, send the ID to check if it's a stone.
 	if event == "UNIT_SPELLCAST_STOP" and arg1 == "player" then
 		SpellcastUpdate(arg3)
-	end
-	-- Currently not used.  Thx Blizz.
-	if event == "BAG_UPDATE" then
-		DeleteHearthstone()
 	end
 end
 
