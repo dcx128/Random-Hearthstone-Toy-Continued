@@ -1,6 +1,8 @@
 # Random-Hearthstone-Toy-Continued
 A continuation of  Hemco's random Hearth toy
 
+** Important, if you were using Hemco's original addon, please make sure to uninstall it and delete the macro before using this one **
+
 Generates a macro that uses a random hearthstone from your toybox.
 
 Works better than writing your own macro since you don't have to figure out the toy ID for each stone, plus that ID can change when you get a new toy and if you have filters set in your toybox UI.
