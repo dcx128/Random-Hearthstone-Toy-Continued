@@ -69,7 +69,7 @@ AllHearthToyIndex[180290] = 326064 --Night Fae
 AllHearthToyIndex[184353] = 345393 --Kyrian
 AllHearthToyIndex[183716] = 342122 --Venthyr
 AllHearthToyIndex[188952] = 363799 --Dominated Hearthstone
-AllHearthToyIndex[190237] = 363799 --Broker Translocation Matrix
+AllHearthToyIndex[190237] = 367013--Broker Translocation Matrix
 AllHearthToyIndex[193588] = 375357 --Timewalker's Hearthstone
 
 
@@ -155,10 +155,10 @@ end
 function GenMacro(itemID, toyName)
 	-- Did we find the index?  If so, edit that. The macro changes the button to the next stone, but only if we aren't in combat; can't SetAttribute. It then "clicks" the RHTB button
 	if RHTIndex then
-		EditMacro(RHTIndex, " ", "INV_MISC_QUESTIONMARK", "#showtooltip item:" .. itemID .. "\r/run if not InCombatLockdown() then RHT.b:SetAttribute(\"item\",\"" .. toyName .. "\") end\r/click RHTB")
+		EditMacro(RHTIndex, " ", "INV_MISC_QUESTIONMARK", "#showtooltip item:" .. itemID .. "\r/run if not InCombatLockdown() then RHT.b:SetAttribute(\"item\",\"" .. toyName .. "\") end\r/click RHTB LeftButton")
 	else
 		-- No macro found, make a new one, get it's ID, then set the toy on the invisble button. This one is named so people can find it on first use.
-		CreateMacro("RHT", "INV_MISC_QUESTIONMARK", "#showtooltip item:" .. itemID .. "\r/run if not InCombatLockdown() then RHT.b:SetAttribute(\"item\",\"" .. toyName .. "\") end\r/click RHTB")
+		CreateMacro("RHT", "INV_MISC_QUESTIONMARK", "#showtooltip item:" .. itemID .. "\r/run if not InCombatLockdown() then RHT.b:SetAttribute(\"item\",\"" .. toyName .. "\") end\r/click RHTB LeftButton")
 		GetMacroIndex()
 	end
 end
