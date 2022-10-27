@@ -1,4 +1,4 @@
-## Interface: 90207
+## Interface: 100000
 ## Title: Random Hearth Toy Continued
 ## Author: awls99
 ## Version: 1.0.1
