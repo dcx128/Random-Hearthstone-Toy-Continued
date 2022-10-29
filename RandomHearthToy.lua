@@ -71,6 +71,8 @@ AllHearthToyIndex[183716] = 342122 --Venthyr
 AllHearthToyIndex[188952] = 363799 --Dominated Hearthstone
 AllHearthToyIndex[190237] = 367013 --Broker Translocation Matrix
 AllHearthToyIndex[193588] = 375357 --Timewalker's Hearthstone
+AllHearthToyIndex[190196] = 366945 --Enlightened Hearthstone
+AllHearthToyIndex[200630] = 391042 --Ohn'ir Windsage's Hearthstone
 
 
 
