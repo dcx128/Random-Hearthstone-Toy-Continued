@@ -106,9 +106,9 @@ end
 -- Get stones learned and usable by character
 function GetLearnedStones()
 	-- Get the current setting for the toybox so we can set it back after we're done.
-	ToyCollSetting = C_ToyBox.GetCollectedShown()
-	ToyUnCollSetting = C_ToyBox.GetUncollectedShown()
-	ToyUsableSetting = C_ToyBox.GetUnusableShown()
+	local ToyCollSetting = C_ToyBox.GetCollectedShown()
+	local ToyUnCollSetting = C_ToyBox.GetUncollectedShown()
+	local ToyUsableSetting = C_ToyBox.GetUnusableShown()
 	
 	C_ToyBox.SetCollectedShown(true) -- List collected toys
 	C_ToyBox.SetUncollectedShown(false) -- Don't list uncollected toys
@@ -202,6 +202,7 @@ function RandomKey(t)
     for key, value in pairs(t) do
         keys[#keys+1] = key --Store keys in another table.
     end
+    if (not #keys) or (#keys < 1) then return 0 end
     index = keys[math.random(1, #keys)]
     return index
 end
