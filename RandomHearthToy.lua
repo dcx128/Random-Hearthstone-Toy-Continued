@@ -1,82 +1,6 @@
+-- To use random hearthstone toys gathered through world events.
+
 local AllHearthToyIndex = {} --All the toys
--- Generate list of stones in game.
-AllHearthToyIndex[166747] = { spellId = 286353, name = "Brewfest" }
-AllHearthToyIndex[165802] = { spellId = 286031, name = "Noble" }
-AllHearthToyIndex[165670] = { spellId = 285424, name = "Peddlefeet" }
-AllHearthToyIndex[165669] = { spellId = 285362, name = "Lunar" }
-AllHearthToyIndex[166746] = { spellId = 286331, name = "Fire Eater" }
-AllHearthToyIndex[163045] = { spellId = 278559, name = "Horseman" }
-AllHearthToyIndex[162973] = { spellId = 278244, name = "Greatfather" }
-AllHearthToyIndex[142542] = { spellId = 231504, name = "Tome of TP" }
-AllHearthToyIndex[64488]  = { spellId = 94719, name = "Innkeeper" }
-AllHearthToyIndex[54452]  = { spellId = 75136, name = "Ethereal" }
-AllHearthToyIndex[93672]  = { spellId = 136508, name = "Dark Portal" }
-AllHearthToyIndex[168907] = { spellId = 298068, name = "Holographic Digitalization" }
-AllHearthToyIndex[172179] = { spellId = 308742, name = "Eternal Traveler" }
-AllHearthToyIndex[182773] = { spellId = 340200, name = "Necrolord" }
-AllHearthToyIndex[180290] = { spellId = 326064, name = "Night Fae" }
-AllHearthToyIndex[184353] = { spellId = 345393, name = "Kyrian" }
-AllHearthToyIndex[183716] = { spellId = 342122, name = "Venthyr" }
-AllHearthToyIndex[188952] = { spellId = 363799, name = "Dominated Hearthstone" }
-AllHearthToyIndex[190237] = { spellId = 367013, name = "Broker Translocation Matrix" }
-AllHearthToyIndex[193588] = { spellId = 375357, name = "Timewalker's Hearthstone" }
-AllHearthToyIndex[190196] = { spellId = 366945, name = "Enlightened Hearthstone" }
-AllHearthToyIndex[200630] = { spellId = 391042, name = "Ohn'ir Windsage's Hearthstone" }
-AllHearthToyIndex[206195] = { spellId = 412555, name = "Path of the Naaru" }
-AllHearthToyIndex[209035] = { spellId = 422284, name = "Hearthstone of the Flame" }
-AllHearthToyIndex[208704] = { spellId = 420418, name = "Deepdweller's Earthen Hearthstone" }
-
--- Ensure Ace3 is loaded
-local AceAddon = LibStub("AceAddon-3.0")
-local AceConfig = LibStub("AceConfig-3.0")
-local AceConfigDialog = LibStub("AceConfigDialog-3.0")
-RandomHearthToySettings = {} --Settings for the addon
-
-
-local function InitializeDB()
-	local defaults = {
-		profile = {}
-	}
-	for key, _ in pairs(AllHearthToyIndex) do
-		defaults.profile[key] = true
-	end
-	RandomHearthToySettings = LibStub("AceDB-3.0"):New("RandomHearthToyDB", defaults, true)
-	DevTools_Dump({ RandomHearthToySettings });
-end
-
-
--- Define your addon
-local RandomHearthToy = AceAddon:NewAddon("RandomHearthToy", "AceConsole-3.0")
-
-local function registerOptions()
-	InitializeDB()
-	-- Define your options table
-	local options = {
-		name = "RandomHearthToy Options",
-		type = "group",
-		args = {}
-	}
-
-	-- For each hearthstone, create an option
-	for k, hearthstone in pairs(AllHearthToyIndex) do
-		options.args["hearthstone" .. k] = {
-				type = "toggle",
-				name = tostring(hearthstone["name"]),
-				desc = "Toggle " .. tostring(hearthstone["name"]),
-				get = function() return RandomHearthToySettings.profile[k] end,
-				set = function(_, value) RandomHearthToySettings.profile[k] = value end,
-		}
-	end
-
-	-- Register your options table with AceConfig
-	AceConfig:RegisterOptionsTable("RandomHearthToy", options)
-
-	-- Add the options table to the Blizzard Interface Options
-	AceConfigDialog:AddToBlizOptions("RandomHearthToy", "RandomHearthToy")
-
-end
-
-
 local UsableHearthToyIndex = {} --Usable toys
 local RHTIndex = false --Macro index
 RHT = {} --Setup for button and timeout frame
@@ -103,11 +27,10 @@ C_Timer.After(timeOut, function()
     local ticker
     ticker = C_Timer.NewTicker(1, function()
   		if C_ToyBox.GetNumToys() > 0 then
-			registerOptions()
   			GetLearnedStones()
   			if RHTInitialized then
   				SetRandomHearthToy()
-  				print "RHT initialized" -- uncomment for debugging future versions
+  				--print "RHT initialized" -- uncomment for debugging future versions
   				ticker:Cancel()
   			end
   		end
@@ -121,11 +44,8 @@ frame:RegisterEvent("UNIT_SPELLCAST_STOP")
 
 local function Event(self, event, arg1, arg2, arg3)
 	if event == "PLAYER_ENTERING_WORLD" then
-		if RHTInitialized then
-			SetRandomHearthToy()
-		else
-			GetMacroIndex()
-		end
+		GetMacroIndex()
+		frame:UnregisterEvent("PLAYER_ENTERING_WORLD")
 	end
 	-- When a spell cast stops and it's the player's spell, send the ID to check if it's a stone.
 	if event == "UNIT_SPELLCAST_STOP" and arg1 == "player" then
@@ -135,28 +55,42 @@ end
 
 frame:SetScript("OnEvent", Event)
 
-function removeUnwantedStones()
-	for k, v in pairs(RandomHearthToySettings.profile) do
-		if not v then
-			RemoveStone(k)
-		end
-	end
-end
-
+-- Generate list of stones in game.
+AllHearthToyIndex[166747] = 286353 --Brewfest
+AllHearthToyIndex[165802] = 286031 --Noble
+AllHearthToyIndex[165670] = 285424 --Peddlefeet
+AllHearthToyIndex[165669] = 285362 --Lunar
+AllHearthToyIndex[166746] = 286331 --Fire Eater
+AllHearthToyIndex[163045] = 278559 --Horseman
+AllHearthToyIndex[162973] = 278244 --Greatfather
+AllHearthToyIndex[142542] = 231504 --Tome of TP
+AllHearthToyIndex[64488]  = 94719   --Innkeeper
+AllHearthToyIndex[54452]  = 75136   --Ethereal
+AllHearthToyIndex[93672]  = 136508  --Dark Portal
+AllHearthToyIndex[168907] = 298068 --Holographic Digitalization
+AllHearthToyIndex[172179] = 308742 --Eternal Traveler
+AllHearthToyIndex[182773] = 340200 --Necrolord
+AllHearthToyIndex[180290] = 326064 --Night Fae
+AllHearthToyIndex[184353] = 345393 --Kyrian
+AllHearthToyIndex[183716] = 342122 --Venthyr
+AllHearthToyIndex[188952] = 363799 --Dominated Hearthstone
+AllHearthToyIndex[190237] = 367013 --Broker Translocation Matrix
+AllHearthToyIndex[193588] = 375357 --Timewalker's Hearthstone
+AllHearthToyIndex[190196] = 366945 --Enlightened Hearthstone
+AllHearthToyIndex[200630] = 391042 --Ohn'ir Windsage's Hearthstone
+AllHearthToyIndex[206195] = 412555 --Path of the Naaru
+AllHearthToyIndex[209035] = 422284 --Hearthstone of the Flame
+AllHearthToyIndex[208704] = 420418 --Deepdweller's Earthen Hearthstone
 
 -- This is the meat right here.
 function SetRandomHearthToy()
-	debugOptions()
 	-- Setting the new stone while in combat is bad.
 	if not InCombatLockdown() then
 		-- Find the macro.
 		CheckMacroIndex()
-		-- Remove stones based on settings from UsableHearthToyIndex
-		removeUnwantedStones()
 		-- Rebuild the stone list if it's empty.
 		if next(UsableHearthToyIndex) == nil then
 			GetLearnedStones()
-			removeUnwantedStones()
 		end		
 		local itemID, toyName = ''
 		-- Randomly pick one.
@@ -257,7 +191,7 @@ end
 function SpellcastUpdate(spellID)
 	if not InCombatLockdown() then
 		for k in pairs(AllHearthToyIndex) do
-			if spellID == AllHearthToyIndex[k]["spellId"] or spellID == 346060 then -- there are two necrolord spells, adding one here temporarily, should refactor the spell lists soon
+			if spellID == AllHearthToyIndex[k] or spellID == 346060 then -- there are two necrolord spells, adding one here temporarily, should refactor the spell lists soon
 				SetRandomHearthToy()
 				break
 			end
@@ -276,8 +210,4 @@ function RandomKey(t)
     if (not #keys) or (#keys < 1) then return 0 end
     index = keys[math.random(1, #keys)]
     return index
-end
-
-function debugOptions()
-	DevTools_Dump({ RandomHearthToySettings.profile });
 end
