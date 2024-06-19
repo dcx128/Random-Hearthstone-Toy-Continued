@@ -8,8 +8,8 @@ AllHearthToyIndex[166746] = { spellId = 286331, name = "Fire Eater" }
 AllHearthToyIndex[163045] = { spellId = 278559, name = "Horseman" }
 AllHearthToyIndex[162973] = { spellId = 278244, name = "Greatfather" }
 AllHearthToyIndex[142542] = { spellId = 231504, name = "Tome of TP" }
-AllHearthToyIndex[64488]  = { spellId = 94719, name = "Innkeeper" }
-AllHearthToyIndex[54452]  = { spellId = 75136, name = "Ethereal" }
+AllHearthToyIndex[64488]  = { spellId = 94719,  name = "Innkeeper" }
+AllHearthToyIndex[54452]  = { spellId = 75136,  name = "Ethereal" }
 AllHearthToyIndex[93672]  = { spellId = 136508, name = "Dark Portal" }
 AllHearthToyIndex[168907] = { spellId = 298068, name = "Holographic Digitalization" }
 AllHearthToyIndex[172179] = { spellId = 308742, name = "Eternal Traveler" }
@@ -27,6 +27,7 @@ AllHearthToyIndex[209035] = { spellId = 422284, name = "Hearthstone of the Flame
 AllHearthToyIndex[208704] = { spellId = 420418, name = "Deepdweller's Earthen Hearthstone" }
 AllHearthToyIndex[212337] = { spellId = 401802, name = "Stone of the Hearth" }
 AllHearthToyIndex[212337] = { spellId = 431644, name = "Stone of the Hearth" }
+AllHearthToyIndex[210455] = { spellId = 438606, name = "Draenic Hologem" }
 
 
 
