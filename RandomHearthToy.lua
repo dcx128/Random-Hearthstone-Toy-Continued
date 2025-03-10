@@ -10,7 +10,9 @@ elseif locale == "deDE" then
 elseif locale == "frFR" then
     activeLocale = Locales.frFR or Locales.enUS
 elseif locale == "zhCN" then
-    activeLocale = Locales.zhCN or Locales.enUS	
+    activeLocale = Locales.zhCN or Locales.enUS
+elseif locale == "ruRU" then
+    activeLocale = Locales.ruRU or Locales.enUS
 else
     activeLocale = Locales.enUS -- Default to English
 end
