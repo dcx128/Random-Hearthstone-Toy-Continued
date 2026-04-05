@@ -31,5 +31,7 @@ AllHearthToyIndex.Locales.frFR = {
   [235016] = { spellId = 1217281, name = "Module de redéploiement"},
   [245970] = { spellId = 1240219, name = "Pierre de foyer expresse du maître de P.O.S.T.E."},
   [246565] = { spellId = 1242509, name = "Pierre de foyer cosmique"},
-	[263489] = { spellId = 1270583, name = "Étreinte des Naaru"},
+  [263489] = { spellId = 1270583, name = "Étreinte des Naaru"},
+  [263933] = { spellId = 1270814, name = "Pierre de foyer de la traque"},
+  [257736] = { spellId = 1261979, name = "Pierre de foyer de lumappel"},
 }
