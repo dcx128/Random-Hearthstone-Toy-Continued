@@ -27,5 +27,12 @@ AllHearthToyIndex.Locales.esES = {
   [208704] = { spellId = 420418, name = "Piedra de hogar terránea de habitante las profundidades"},
   [212337] = { spellId = 401802, name = "Piedra del hogar"},
   [228940] = { spellId = 463481, name = "Piedra de hogar de hilo infame"},
-  [236687] = { spellId = 1220729, name = "Piedra de hogar explosiva"}
+  [236687] = { spellId = 1220729, name = "Piedra de hogar explosiva"},
+  [235016] = { spellId = 1217281, name = "Módulo de redespliegue"},
+  [245970] = { spellId = 1240219, name = "Piedra de hogar exprés del jefe de correos"},
+  [246565] = { spellId = 1242509, name = "Piedra de hogar cósmica"},
+	[263489] = { spellId = 1270583, name = "Envoltorio de Naaru"},
+	[263933] = { spellId = 1270814, name = "Piedra de hogar de buscapresas"},
+	[257736] = { spellId = 1261979, name = "Piedra de hogar de la Luz"},
+	[265100] = { spellId = 1273401, name = "Piedra de hogar de celador del núcleo"},
 }

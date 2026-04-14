@@ -27,7 +27,14 @@ AllHearthToyIndex.Locales.zhCN = {
   [208704] = { spellId = 420418, name = "幽邃住民的土灵炉石"},
   [212337] = { spellId = 401802, name = "炉之石"},
   [228940] = { spellId = 463481, name = "恶名丝线炉石"},
-  [236687] = { spellId = 1220729, name = "高爆炉石"}
+  [236687] = { spellId = 1220729, name = "高爆炉石"},
+  [235016] = { spellId = 1217281, name = "重部署模块"},
+  [245970] = { spellId = 1240219, name = "P.O.S.T.总管的特快炉石"},
+  [246565] = { spellId = 1242509, name = "星瀚炉石"},
+	[263489] = { spellId = 1270583, name = "那魯的擁抱"},
+	[263933] = { spellId = 1270814, name = "寻猎者的炉石"},
+	[257736] = { spellId = 1261979, name = "圣光呼唤炉石"},
+	[265100] = { spellId = 1273401, name = "核心守卫的炉石"},
 -- got a bug report that this HS gets stuck if character os not Draenei, disabling for now
 -- AllHearthToyIndex[210455] = { spellId = 438606, name = "德莱尼全息宝石"}
 }

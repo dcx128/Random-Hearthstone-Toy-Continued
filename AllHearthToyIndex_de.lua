@@ -27,7 +27,14 @@ AllHearthToyIndex.Locales.deDE = {
   [208704] = { spellId = 420418, name = "Irdener Ruhestein des Tiefenbewohners"},
   [212337] = { spellId = 401802, name = "Ruhestein"},
   [228940] = { spellId = 463481, name = "Ruhestein des berüchtigten Faden"},
-  [236687] = { spellId = 1220729, name = "Explosiver Ruhestein"}
+  [236687] = { spellId = 1220729, name = "Explosiver Ruhestein"},
+  [235016] = { spellId = 1217281, name = "Umverlegungsmodul"},
+  [245970] = { spellId = 1240219, name = "Expressruhestein des P.O.S.T.-Meisters"},
+  [246565] = { spellId = 1242509, name = "Kosmischer Ruhestein"},
+	[263489] = { spellId = 1270583, name = "Umhüllung der Naaru"},
+	[263933] = { spellId = 1270814, name = "Ruhestein des Beutesuchers"},
+	[257736] = { spellId = 1261979, name = "Lichtgerufener Ruhestein"},
+	[265100] = { spellId = 1273401, name = "Ruhestein der Kernwächterin"},
 -- got a bug report that this HS gets stuck if character os not Draenei, disabling for now
 -- AllHearthToyIndex[210455] = { spellId = 438606, name = "Draenischer Holostein"}
 }

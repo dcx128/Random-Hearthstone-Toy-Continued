@@ -27,5 +27,12 @@ AllHearthToyIndex.Locales.frFR = {
   [208704] = { spellId = 420418, name = "Pierre de foyer en terre de rôdeur des profondeurs" },
   [212337] = { spellId = 401802, name = "Pierre du foyer" },
   [228940] = { spellId = 463481, name = "Pierre de foyer de fil notoire" },
-  [236687] = { spellId = 1220729, name = "Pierre de foyer explosive"}
+  [236687] = { spellId = 1220729, name = "Pierre de foyer explosive"},
+  [235016] = { spellId = 1217281, name = "Module de redéploiement"},
+  [245970] = { spellId = 1240219, name = "Pierre de foyer expresse du maître de P.O.S.T.E."},
+  [246565] = { spellId = 1242509, name = "Pierre de foyer cosmique"},
+  [263489] = { spellId = 1270583, name = "Étreinte des Naaru"},
+  [263933] = { spellId = 1270814, name = "Pierre de foyer de la traque"},
+  [257736] = { spellId = 1261979, name = "Pierre de foyer de lumappel"},
+  [265100] = { spellId = 1273401, name = "Pierre de foyer de garde-cœur"},
 }
